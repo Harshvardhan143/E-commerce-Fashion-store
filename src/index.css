@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #1a1a1a;
+  background-color: #fafafa;
+  scroll-behavior: smooth;
+}
+
+.banner {
+  height: 800px;
+  background: linear-gradient(
+      to bottom,
+      rgba(26, 26, 26, 0.4) 0%,
+      rgba(26, 26, 26, 0.7) 100%
+    ),
+    url("/assets/banner1.png") center/cover no-repeat;
+  background-position: center;
+}
+
+.shop-banner {
+  background: linear-gradient(
+      to bottom,
+      rgba(26, 26, 26, 0.3) 0%,
+      rgba(26, 26, 26, 0.6) 100%
+    ),
+    url("/assets/shopbanner1.png") center/cover no-repeat;
+}
+
+/* Glassmorphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Add these styles to your CSS file */
+.sidebar-enter {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+.sidebar-enter-active {
+  transform: translateX(0);
+}
+.sidebar-exit {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+.sidebar-exit-active {
+  transform: translateX(-100%);
+}
+
+
+.singleOrder-table td{
+  text-align: left;
+}
+
+.singleOrder-table th{
+  text-align: left;
+}
