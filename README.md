@@ -25,9 +25,6 @@
 <h2>Video instructions YouTube tutorial for running the application:</h2>
 <a href="https://www.youtube.com/watch?v=M9DHiusoPOI">https://www.youtube.com/watch?v=M9DHiusoPOI</a>
 
-<h2>live demo:</h2>
-<a href="e-commerce-fashion-store-delta.vercel.app">e-commerce-fashion-store-delta.vercel.app</a>
-
 
 <h2>Instructions - The Fashion Website Template</h2>
 <ol>
