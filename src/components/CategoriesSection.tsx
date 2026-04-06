@@ -25,7 +25,7 @@ const CategoriesSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
         <CategoryItem
           categoryTitle="Women's Fashion"
-          image="women-catalog.png"
+          image="new_womens_catalog.png"
           link="women"
         />
         <CategoryItem
@@ -40,7 +40,7 @@ const CategoriesSection = () => {
         />
         <CategoryItem
           categoryTitle="Girls' Collection"
-          image="girls-catalog.png"
+          image="girls-dress-1.png"
           link="girls"
         />
       </div>

@@ -30,7 +30,7 @@
     {
       "id": "4",
       "title": "Golden Party Dress",
-      "image": "girls-catalog.png",
+      "image": "golden_party_dress.png",
       "category": "women",
       "price": 2500,
       "popularity": 2,
@@ -39,7 +39,7 @@
     {
       "id": "5",
       "title": "Premium Couture Dress",
-      "image": "women-catalog.png",
+      "image": "premium_couture_dress.png",
       "category": "women",
       "price": 5200,
       "popularity": 1,
@@ -66,7 +66,7 @@
     {
       "id": "8",
       "title": "Silk Occasion Dress",
-      "image": "women-catalog.png",
+      "image": "silk_occasion_dress.png",
       "category": "women",
       "price": 4500,
       "popularity": 5,
@@ -197,6 +197,15 @@
       "price": 25000,
       "popularity": 20,
       "stock": 10
+    },
+    {
+      "id": "23",
+      "title": "Emerald Silk Evening Gown",
+      "image": "new_womens_dress.png",
+      "category": "luxury-collection",
+      "price": 32000,
+      "popularity": 20,
+      "stock": 5
     }
   ],
   "orders": [

@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        secondaryBrown: "#bdae82", // Muted Sand/Gold
-        primaryDeep: "#1a1a1a",    // Deep Charcoal
-        accentMuted: "#f4f4f4",    // Soft Gray for backgrounds
+        secondaryBrown: "#D4AF37", // Premium Gold
+        primaryDeep: "#0a0a0a",    // Rich Black
+        accentMuted: "#f8f8f8",    // Pristine Light Gray for backgrounds
       },
       fontFamily: {
         serif: ['"Playfair Display"', 'serif'],

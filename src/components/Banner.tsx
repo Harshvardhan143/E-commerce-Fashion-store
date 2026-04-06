@@ -5,7 +5,7 @@ const Banner = () => {
     <div 
       className="relative w-full h-screen min-h-[600px] flex flex-col justify-center items-center overflow-hidden"
       style={{
-        backgroundImage: "url('/assets/hero-banner.png')",
+        backgroundImage: "url('/assets/premium_hero_banner.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -13,18 +13,18 @@ const Banner = () => {
       {/* Dark gradient overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl mt-20">
-        <span className="inline-block text-secondaryBrown uppercase tracking-[0.4em] text-xs md:text-sm mb-6 font-semibold border border-secondaryBrown/50 px-4 py-1.5">
-          New Arrivals — 2026
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 max-w-4xl mt-10 md:mt-16 mb-24 md:mb-32">
+        <span className="inline-block text-secondaryBrown uppercase tracking-[0.4em] text-xs md:text-sm mb-6 font-semibold border border-secondaryBrown px-6 py-2">
+          Exclusive Collection 2026
         </span>
 
-        <h2 className="text-white text-5xl md:text-7xl lg:text-[6rem] font-serif mb-6 drop-shadow-lg leading-[1.1]">
-          Redefine Your <br />
-          <em className="font-light" style={{fontStyle: 'italic'}}>Elegance</em>
+        <h2 className="text-white text-5xl md:text-7xl lg:text-[7rem] font-serif mb-6 drop-shadow-xl leading-none">
+          The Art Of <br />
+          <em className="font-light italic text-secondaryBrown drop-shadow-lg">Luxury</em>
         </h2>
 
-        <p className="text-gray-300 text-base md:text-lg font-light max-w-xl mb-12 drop-shadow-md leading-relaxed">
-          Discover our exclusive collection for those who appreciate timeless beauty and impeccable craft.
+        <p className="text-white/90 text-base md:text-lg font-light tracking-wide max-w-xl mb-12 drop-shadow-lg leading-relaxed">
+          Elevate your wardrobe with meticulously crafted pieces. Discover the ultimate expression of modern fashion and timeless elegance.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 z-20 pointer-events-auto">
@@ -44,7 +44,7 @@ const Banner = () => {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center animate-bounce">
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 z-10 hidden sm:flex flex-col items-center animate-bounce">
         <span className="text-white/60 text-xs tracking-[0.2em] mb-2 uppercase">Scroll</span>
         <div className="w-[1px] h-8 bg-white/60"></div>
       </div>

@@ -2,12 +2,20 @@ import { Link } from "react-router-dom";
 
 const categories = [
   {
+    name: "Luxury Reserve",
+    id: "luxury",
+    description: "Our most exclusive and highly sought-after premium items.",
+    image: "luxury_womens_handbag.png",
+    link: "/shop",
+    gridClass: "lg:col-span-2 lg:row-span-2",
+  },
+  {
     name: "Women's Collection",
     id: "women",
     description: "Elegant silk dresses, sophisticated evening wear, and modern classics.",
-    image: "women-catalog.png",
+    image: "new_womens_catalog.png",
     link: "/shop/women",
-    gridClass: "lg:col-span-2 lg:row-span-2",
+    gridClass: "lg:col-span-1 lg:row-span-2",
   },
   {
     name: "Men's Collection",
@@ -15,21 +23,13 @@ const categories = [
     description: "Tailored suits, premium casual wear, and contemporary essentials.",
     image: "men-catalog.png",
     link: "/shop/men",
-    gridClass: "lg:col-span-1 lg:row-span-2",
-  },
-  {
-    name: "Boys' Fashion",
-    id: "boys",
-    description: "Stylish and comfortable designer wear for young boys.",
-    image: "boys-catalog.png",
-    link: "/shop/boys",
     gridClass: "lg:col-span-1 lg:row-span-1",
   },
   {
-    name: "Girls' Fashion",
-    id: "girls",
-    description: "Beautiful dresses and playful outfits for young girls.",
-    image: "girls-catalog.png",
+    name: "Kids' Fashion",
+    id: "kids",
+    description: "Beautiful designer wear for the young ones.",
+    image: "girls-dress-1.png",
     link: "/shop/girls",
     gridClass: "lg:col-span-1 lg:row-span-1",
   },
@@ -39,12 +39,20 @@ const Catalog = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gray-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 text-center">
-          <h1 className="text-5xl md:text-7xl font-serif text-black mb-6 tracking-tight">The Catalog</h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-500 font-light leading-relaxed">
-            Explore our curated collections across all departments. From the timeless elegance of women's couture 
-            to the sophisticated tailoring of men's fashion and the playful luxury of our children's range.
+      <div className="relative overflow-hidden bg-primaryDeep py-24 sm:py-32">
+        {/* Subtle decorative background circles */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-secondaryBrown/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[100px]" />
+        
+        <div className="relative z-10 mx-auto max-w-screen-2xl px-6 lg:px-12 text-center">
+          <span className="inline-block text-secondaryBrown uppercase tracking-[0.4em] text-xs font-semibold border border-secondaryBrown px-4 py-1.5 mb-6">
+            Mewar Nath Collections
+          </span>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white mb-8 tracking-tight drop-shadow-lg">
+            Curated <em className="font-light italic text-secondaryBrown">Elegance</em>
+          </h1>
+          <p className="mx-auto max-w-2xl text-lg text-gray-300 font-light leading-relaxed">
+            Immerse yourself in our meticulously selected collections. From our exclusive Luxury Reserve 
+            to timeless masterpieces across all departments, discover your signature style.
           </p>
         </div>
       </div>
@@ -84,22 +92,21 @@ const Catalog = () => {
 
       {/* Shop All Banner */}
       <div className="mx-auto max-w-screen-2xl px-6 lg:px-12 pb-24">
-        <div className="relative rounded-3xl overflow-hidden bg-black py-20 px-8 text-center shadow-2xl">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif text-white mb-6">Can't decide?</h2>
-            <p className="text-gray-400 font-light mb-10 text-lg">
-              Browse our entire digital storefront encompassing all collections, special editions, and limited releases.
+        <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-black py-24 px-8 text-center shadow-2xl flex flex-col justify-center items-center">
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-serif text-white mb-6 drop-shadow-md">Not Sure Where to Begin?</h2>
+            <p className="text-white/90 font-light mb-12 text-lg drop-shadow-sm max-w-xl mx-auto">
+              Browse our entire digital storefront bypassing categories. View all collections, special editions, and limited releases in one place.
             </p>
             <Link
               to="/shop"
-              className="inline-block bg-white text-black px-10 py-4 rounded-full text-sm font-semibold uppercase tracking-widest hover:bg-gray-200 transition-colors shadow-lg"
+              className="inline-block bg-primaryDeep text-white px-12 py-5 text-sm font-semibold uppercase tracking-widest hover:bg-white hover:text-primaryDeep transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.2)] transform hover:-translate-y-1"
             >
-              Shop All Products
+              Shop All Styles
             </Link>
           </div>
           {/* Subtle decoration */}
-          <div className="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-tr from-black/20 to-transparent pointer-events-none" />
         </div>
       </div>
     </div>

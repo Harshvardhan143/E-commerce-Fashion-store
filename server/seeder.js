@@ -71,15 +71,10 @@ const seedDB = async () => {
 
     // ──────────────── SEED PRODUCTS ────────────────
     const catalogPool = [
-      "product image 1.jpg", "product image 2.jpg", "product image 3.jpg",
-      "product image 4.jpg", "product image 5.jpg", "product image 6.jpg",
-      "product image 7.jpg", "product image 8.jpg", "product image 9.jpg",
-      "product image 10.jpg", "product image 11.jpg", "product image 12.jpg",
-      "product image 13.jpg", "product image 14.jpg", "product image 15.jpg",
-      "product image 16.jpg", "product image 17.jpg", "product image 18.jpg",
-      "men-catalog.png", "women-catalog.png", "boys-catalog.png", "girls-catalog.png",
-      "men-suit-1.png", "men-casual-1.png", "boys-shirt-1.png", "girls-dress-1.png",
-      "luxury fashion 7 1.png", "luxury fashion 7 2.png"
+      "product19.png", "product20.png", "product21.png",
+      "product22.png", "new_womens_dress.png", "new_womens_catalog.png",
+      "boys-catalog.png", "girls-dress-1.png",
+      "men-suit-1.png", "men-casual-1.png", "boys-shirt-1.png", "girls-dress-1.png"
     ];
 
     const getRandomImage = () => catalogPool[Math.floor(Math.random() * catalogPool.length)];
@@ -153,12 +148,40 @@ const seedDB = async () => {
       },
       {
         title: "Golden Party Gown",
-        image: "girls-catalog.png",
+        image: "new_womens_dress.png",
         category: "girls",
         price: 4200,
         popularity: 11,
         stock: 25,
         description: "Make her feel like a princess in this elegant golden gown."
+      },
+      // NEW LUXURY ITEMS (Auto-Generated)
+      {
+        title: "Onyx & Gold Mechanical Timepiece",
+        image: "luxury_mens_watch.png",
+        category: "luxury-collection",
+        price: 45000,
+        popularity: 20,
+        stock: 12,
+        description: "An incredibly precise automatic mechanical watch featuring a bespoke onyx dial and gold-plated case. A true statement of power and prestige."
+      },
+      {
+        title: "Burgundy Velvet Designer Handbag",
+        image: "luxury_womens_handbag.png",
+        category: "luxury-collection",
+        price: 28000,
+        popularity: 19,
+        stock: 8,
+        description: "Exquisitely crafted from genuine full-grain leather, this designer handbag brings an opulent touch to any outfit with its rich burgundy hue and gold hardware."
+      },
+      {
+        title: "Noir Rouge Signature Stilettos",
+        image: "luxury_stiletto_heels.png",
+        category: "luxury-collection",
+        price: 18500,
+        popularity: 18,
+        stock: 15,
+        description: "Strikingly elegant black glossy stilettos with a subtle red sole. The definitive evening shoe for the modern cosmopolitan woman."
       }
     ];
 

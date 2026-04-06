@@ -1,6 +1,7 @@
+import React, { useState } from "react";
 import { HiOutlineTrash } from "react-icons/hi2";
 import { useAppDispatch, useAppSelector } from "../hooks";
-import { removeProductFromTheCart } from "../features/cart/cartSlice";
+import { removeProductFromTheCart, clearCart } from "../features/cart/cartSlice";
 import customFetch from "../axios/custom";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -10,12 +11,15 @@ const paymentMethods = [
   { id: "credit-card", title: "Credit card" },
   { id: "paypal", title: "PayPal" },
   { id: "etransfer", title: "eTransfer" },
+  { id: "upi", title: "UPI" },
+  { id: "cod", title: "Cash on Delivery" },
 ];
 
 const Checkout = () => {
   const { productsInCart, subtotal } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [selectedPayment, setSelectedPayment] = useState("credit-card");
 
   const handleCheckoutSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -54,6 +58,7 @@ const Checkout = () => {
 
     if (response.status === 201) {
       toast.success("Order has been placed successfully");
+      dispatch(clearCart());
       navigate("/order-confirmation");
     } else {
       toast.error("Something went wrong, please try again later");
@@ -135,33 +140,42 @@ const Checkout = () => {
           {/* Payment */}
           <div className="border-t border-gray-100 pt-12">
             <h2 className="text-xl font-serif text-primaryDeep mb-6 italic">Payment Method</h2>
-            <div className="flex gap-8 mb-8">
+            <div className="flex flex-wrap gap-8 mb-8">
               {paymentMethods.map((method) => (
                 <label key={method.id} className="flex items-center gap-3 cursor-pointer group">
-                  <input type="radio" name="paymentType" className="w-4 h-4 accent-secondaryBrown" defaultChecked={method.id === "credit-card"} />
+                  <input 
+                    type="radio" 
+                    name="paymentType" 
+                    value={method.id}
+                    className="w-4 h-4 accent-secondaryBrown" 
+                    checked={selectedPayment === method.id}
+                    onChange={(e) => setSelectedPayment(e.target.value)}
+                  />
                   <span className="text-xs uppercase tracking-widest font-medium text-gray-500 group-hover:text-primaryDeep transition-colors">{method.title}</span>
                 </label>
               ))}
             </div>
             
-            <div className="grid grid-cols-2 gap-6">
-              <div className="col-span-2 space-y-2">
-                <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Card Number</label>
-                <input type="text" name="cardNumber" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
+            {selectedPayment === "credit-card" && (
+              <div className="grid grid-cols-2 gap-6">
+                <div className="col-span-2 space-y-2">
+                  <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Card Number</label>
+                  <input type="text" name="cardNumber" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
+                </div>
+                <div className="col-span-2 space-y-2">
+                  <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Name on Card</label>
+                  <input type="text" name="nameOnCard" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Expiration (MM/YY)</label>
+                  <input type="text" name="expirationDate" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">CVC</label>
+                  <input type="text" name="cvc" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
+                </div>
               </div>
-              <div className="col-span-2 space-y-2">
-                <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Name on Card</label>
-                <input type="text" name="nameOnCard" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Expiration (MM/YY)</label>
-                <input type="text" name="expirationDate" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
-              </div>
-              <div className="space-y-2">
-                <label className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">CVC</label>
-                <input type="text" name="cvc" className="w-full h-12 px-4 bg-gray-50 border border-transparent focus:bg-white focus:border-secondaryBrown outline-none transition-all text-sm font-light tracking-wide" required />
-              </div>
-            </div>
+            )}
           </div>
         </div>
 

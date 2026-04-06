@@ -64,6 +64,10 @@ export const cartSlice = createSlice({
         0
       );
     },
+    clearCart: (state) => {
+      state.productsInCart = [];
+      state.subtotal = 0;
+    },
   },
 });
 
@@ -72,6 +76,7 @@ export const {
   removeProductFromTheCart,
   updateProductQuantity,
   calculateTotalPrice,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

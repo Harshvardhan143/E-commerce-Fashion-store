@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 const catalogImages = [
-  "product image 1.jpg", "product image 2.jpg", "product image 3.jpg",
-  "product image 4.jpg", "product image 5.jpg", "product image 6.jpg",
-  "product image 7.jpg", "product image 10.jpg", "product image 11.jpg",
-  "product image 12.jpg", "men-catalog.png", "women-catalog.png",
-  "boys-catalog.png", "girls-catalog.png", "men-suit-1.png", "girls-dress-1.png",
-  "luxury fashion 7 1.png", "luxury fashion 7 2.png"
+  "luxury_mens_watch.png", "luxury_stiletto_heels.png", "luxury_womens_handbag.png",
+  "product19.png", "product20.png", "product21.png",
+  "product22.png", "mens_navy_suit.png", "mens_white_shirt.png",
+  "mens_grey_pants.png", "men-catalog.png", "new_womens_catalog.png",
+  "boys-catalog.png", "girls-dress-1.png", "men-suit-1.png", "new_womens_dress.png",
+  "boys_tshirt.png", "men-casual-1.png"
 ];
 
 const CatalogGallery = () => {

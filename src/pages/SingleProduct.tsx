@@ -2,15 +2,11 @@ import {
   Button,
   Dropdown,
   ProductItem,
-  QuantityInput,
-  StandardSelectInput,
 } from "../components";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { addProductToTheCart } from "../features/cart/cartSlice";
 import { useAppDispatch } from "../hooks";
-import WithSelectInputWrapper from "../utils/withSelectInputWrapper";
-import WithNumberInputWrapper from "../utils/withNumberInputWrapper";
 import { formatCategoryName } from "../utils/formatCategoryName";
 import toast from "react-hot-toast";
 import customFetch from "../axios/custom";
@@ -24,10 +20,6 @@ const SingleProduct = () => {
   const [quantity, setQuantity] = useState<number>(1);
   const params = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
-
-  // defining HOC instances
-  const SelectInputUpgrade = WithSelectInputWrapper(StandardSelectInput);
-  const QuantityInputUpgrade = WithNumberInputWrapper(QuantityInput);
 
   useEffect(() => {
     const fetchSingleProduct = async () => {
@@ -88,42 +80,84 @@ const SingleProduct = () => {
             <h1 className="text-3xl md:text-4xl font-serif text-primaryDeep leading-tight">{singleProduct?.title}</h1>
             <p className="text-xl font-medium text-primaryDeep mt-1">₹{singleProduct?.price}</p>
           </div>
-          <div className="flex flex-col gap-2">
-            <SelectInputUpgrade
-              selectList={[
-                { id: "xs", value: "XS" },
-                { id: "sm", value: "SM" },
-                { id: "m", value: "M" },
-                { id: "lg", value: "LG" },
-                { id: "xl", value: "XL" },
-                { id: "2xl", value: "2XL" },
-              ]}
-              value={size}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setSize(() => e.target.value)
-              }
-            />
-            <SelectInputUpgrade
-              selectList={[
-                { id: "black", value: "BLACK" },
-                { id: "red", value: "RED" },
-                { id: "blue", value: "BLUE" },
-                { id: "white", value: "WHITE" },
-                { id: "rose", value: "ROSE" },
-                { id: "green", value: "GREEN" },
-              ]}
-              value={color}
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setColor(() => e.target.value)
-              }
-            />
+          <div className="flex flex-col gap-8">
+            {/* Size Selection */}
+            <div>
+              <div className="flex flex-wrap gap-3">
+                {[ "XS", "SM", "M", "LG", "XL", "2XL" ].map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => setSize(s.toLowerCase())}
+                    className={`w-12 h-12 flex items-center justify-center text-xs font-medium border transition-colors
+                      ${size === s.toLowerCase() 
+                        ? "border-primaryDeep bg-primaryDeep text-white" 
+                        : "border-gray-200 text-gray-500 hover:border-gray-400"
+                      }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-            <QuantityInputUpgrade
-              value={quantity}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setQuantity(() => parseInt(e.target.value))
-              }
-            />
+            {/* Color Selection */}
+            <div>
+              <div className="flex flex-wrap gap-4">
+                {[ "BLACK", "RED", "BLUE", "WHITE", "ROSE", "GREEN" ].map((c) => {
+                  const colorMap: Record<string, string> = {
+                    black: "bg-black",
+                    red: "bg-red-700",
+                    blue: "bg-blue-800",
+                    white: "bg-white",
+                    rose: "bg-rose-300",
+                    green: "bg-emerald-800"
+                  };
+                  const isSelected = color === c.toLowerCase();
+                  return (
+                    <div key={c} className="flex flex-col items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => setColor(c.toLowerCase())}
+                        title={c}
+                        className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all flex-shrink-0
+                          ${isSelected 
+                            ? "border-secondaryBrown scale-110" 
+                            : "border-transparent hover:scale-105"
+                          } p-0.5`}
+                      >
+                        <span className={`w-full h-full rounded-full border border-gray-200 block shadow-sm ${colorMap[c.toLowerCase()] || "bg-gray-200"}`}></span>
+                      </button>
+                      <span className={`text-[10px] uppercase font-bold tracking-widest ${isSelected ? 'text-primaryDeep' : 'text-gray-400'}`}>{c}</span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Quantity */}
+            <div>
+              <h3 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-3 mt-4">Quantity</h3>
+              <div className="flex items-center border border-gray-200 w-fit">
+                <button 
+                  type="button"
+                  className="px-4 py-2 text-gray-500 hover:text-primaryDeep hover:bg-gray-50 transition-colors"
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
+                  -
+                </button>
+                <span className="px-6 py-2 text-sm font-medium border-x border-gray-200 text-primaryDeep">
+                  {quantity}
+                </span>
+                <button 
+                  type="button"
+                  className="px-4 py-2 text-gray-500 hover:text-primaryDeep hover:bg-gray-50 transition-colors"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+            </div>
           </div>
           <div className="flex flex-col gap-3">
             <Button mode="brown" text="Add to cart" onClick={handleAddToCart} />
